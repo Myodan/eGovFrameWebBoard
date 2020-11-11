@@ -6,5 +6,7 @@
 		<typeAlias alias="egovMap" type="egovframework.rte.psl.dataaccess.util.EgovMap"/>
 		<typeAlias alias="searchVO" type="egovframework.example.sample.service.SampleDefaultVO"/>
 		<typeAlias alias="sampleVO" type="egovframework.example.sample.service.SampleVO"/>
+		<typeAlias alias="accountVO" type="myodan.board.vo.AccountVO"/>
+		<typeAlias alias="boardVO" type="myodan.board.vo.BoardVO"/>
     </typeAliases>
 </configuration>

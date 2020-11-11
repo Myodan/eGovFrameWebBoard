@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myodan.board.mapper.AccountMapper">
+
+	<resultMap id="account" type="accountVO">
+		<result property="id" column="id"/>
+		<result property="username" column="username"/>
+		<result property="password" column="password"/>
+	</resultMap>
+
+	<insert id="insertAccount" parameterType="accountVO">
+
+		INSERT
+		INTO
+			ACCOUNT ( 
+				ID,
+				USERNAME
+			  	PASSWORD
+			)
+			VALUES (
+				#{id},
+			  	#{username},
+			  	#{password}
+			)
+
+	</insert>
+
+	<update id="updateAccount" parameterType="accountVO">
+
+		UPDATE
+			ACCOUNT
+		SET
+			ID = #{id},
+			USERNAME = #{username},
+			PASSWORD = #{password}
+		WHERE
+			ID=#{id}
+
+	</update>
+
+	<delete id="deleteAccount" parameterType="accountVO">
+
+		DELETE
+		FROM
+			ACCOUNT
+		WHERE
+			ID = #{id}
+
+	</delete>
+
+	<select id="selectAccount" resultMap="account">
+
+		SELECT
+			ID, USERNAME, PASSWORD
+		FROM
+			ACCOUNT
+		WHERE
+			ID = #{id}
+
+	</select>
+
+	<select id="selectAccountSignInCheck" parameterType="accountVO" resultType="boolean">
+
+		SELECT
+			COUNT(*) > 0 
+		FROM
+			ACCOUNT
+		WHERE 1=1
+			AND USERNAME = #{username}
+			AND PASSWORD = #{password}
+			
+	</select>
+
+</mapper>
