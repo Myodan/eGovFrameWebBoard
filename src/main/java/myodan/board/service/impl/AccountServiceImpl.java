@@ -36,6 +36,11 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
+	public boolean selectAccountUsernameCheck(String username) {
+		return accountDAO.selectAccountUsernameCheck(username);
+	}
+
+	@Override
 	public boolean selectAccountSignInCheck(AccountVO accountVO) {
 		return accountDAO.selectAccountSignInCheck(accountVO);
 	}

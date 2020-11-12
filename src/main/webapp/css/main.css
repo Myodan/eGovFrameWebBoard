@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+a {
+	color: #212529;
+}
+
+a:hover {
+	color: #212529;
+}
+
+.page-link {
+	color: #212529;
+}
+
+.page-item.active .page-link {
+	background-color: #23272b;
+	border-color: #1d2124;
+}

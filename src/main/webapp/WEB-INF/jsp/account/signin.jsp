@@ -15,13 +15,16 @@
 				<h1 class="card-title">로그인</h1>
 				<form id="signin" method="POST">
 					<div class="form-group">
-						<label for="username"><strong>사용자 이름</strong></label>
-						<input name="username" id="username" class="form-control" type="text" placeholder="사용자 이름을 입력해주세요!" required>
+						<label for="username"><strong>사용자 이름</strong></label> <input name="username" id="username" class="form-control" type="text" placeholder="사용자 이름을 입력해주세요!" required>
 					</div>
 					<div class="form-group">
-						<label for="password"><strong>암호</strong></label>
-						<input name="password" id="password" class="form-control" type="password" placeholder="암호를 입력해주세요!" required style="margin-bottom: 5px;">
+						<label for="password"><strong>암호</strong></label> <input name="password" id="password" class="form-control" type="password" placeholder="암호를 입력해주세요!" required style="margin-bottom: 5px;">
 					</div>
+					<c:if test="${error ne null}">
+						<div class="alert alert-danger" role="alert">
+							<c:out value="${error}"></c:out>
+						</div>
+					</c:if>
 					<button type="submit" class="btn btn-dark">로그인</button>
 				</form>
 			</div>

@@ -14,7 +14,7 @@
 		INTO
 			ACCOUNT ( 
 				ID,
-				USERNAME
+				USERNAME,
 			  	PASSWORD
 			)
 			VALUES (
@@ -57,6 +57,17 @@
 		WHERE
 			ID = #{id}
 
+	</select>
+
+	<select id="selectAccountUsernameCheck" parameterType="string" resultType="boolean">
+
+		SELECT
+			COUNT(*) > 0 
+		FROM
+			ACCOUNT
+		WHERE 1=1
+			AND USERNAME = #{username}
+			
 	</select>
 
 	<select id="selectAccountSignInCheck" parameterType="accountVO" resultType="boolean">

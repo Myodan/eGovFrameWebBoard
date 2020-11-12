@@ -12,6 +12,8 @@ public interface AccountService {
 
 	AccountVO selectAccount(AccountVO accountVO);
 
+	boolean selectAccountUsernameCheck(String username);
+
 	boolean selectAccountSignInCheck(AccountVO accountVO);
 
 }

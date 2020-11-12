@@ -14,6 +14,10 @@
 		<div class="card" style="margin-bottom: 16px">
 			<div class="card-body">
 				<h1 class="card-title" style="display: inline-flex;">게시글 목록</h1>
+				<form class="form-inline" style="display: inline-flex; float: right;">
+					<input class="form-control mr-sm-2" type="search" placeholder="검색어를 입력하세요!">
+					<button class="btn btn-dark my-2 my-sm-0" type="submit">검색</button>
+				</form>
 				<table class="table">
 					<thead>
 						<tr>
@@ -26,7 +30,7 @@
 					<tbody>
 						<c:forEach var="board" items="${boardList}">
 							<tr>
-								<td style="width: 55%"><a href=""><c:out value="${board.title}" /></a></td>
+								<td style="width: 55%"><a href="/board/detail.do?id=${board.id}&page=${pagingVO.page}"><c:out value="${board.title}" /></a></td>
 								<td style="width: 15%"><c:out value="${board.views}" /></td>
 								<td style="width: 15%"><c:out value="${board.author}" /></td>
 								<td style="width: 15%"><fmt:formatDate value="${board.createdDate}" pattern="yy.MM.dd HH:mm" /></td>
@@ -35,16 +39,20 @@
 					</tbody>
 				</table>
 				<ul class="pagination" style="display: inline-flex; margin-bottom: 0;">
-					<li class="page-item"><a class="page-link" href="#" aria-label="Previous">&laquo;</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#" aria-label="Next">&raquo;</a></li>
+					<li class="page-item <c:if test="${!prev}">disabled</c:if>">
+						<a class="page-link" href="#">&laquo;</a>
+					</li>
+					<c:forEach var="num" begin="${pagingVO.beginPage}" end="${pagingVO.endPage}">
+						<li class="page-item <c:if test="${pagingVO.page eq num}">active</c:if>">
+							<a class="page-link" href="?page=${num}">${num}</a>
+						</li>
+					</c:forEach>
+					<li class="page-item <c:if test="${!prev}">disabled</c:if>">
+						<a class="page-link" href="#">&raquo;</a>
+					</li>
 				</ul>
 				<c:if test="${username ne null}">
-					<div style="display: inline-flex; float: right;">
-						<a class="btn btn-dark" href="#" role="button">작성</a>
-					</div>
+					<a class="btn btn-dark" href="/board/post.do" role="button" style="display: inline-flex; float: right;">작성</a>
 				</c:if>
 			</div>
 		</div>

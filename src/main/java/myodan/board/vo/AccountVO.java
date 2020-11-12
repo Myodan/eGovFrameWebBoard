@@ -11,4 +11,6 @@ public class AccountVO {
 
 	String password;
 
+	String passwordCheck;
+
 }

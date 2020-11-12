@@ -14,6 +14,8 @@ public interface AccountMapper {
 
 	AccountVO selectAccount(AccountVO accountVO);
 
+	boolean selectAccountUsernameCheck(String username);
+
 	boolean selectAccountSignInCheck(AccountVO accountVO);
 
 }

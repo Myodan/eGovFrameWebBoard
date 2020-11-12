@@ -8,7 +8,7 @@ public class MainController {
 
 	@GetMapping("/index.do")
 	public String getIndex() {
-		return "/index";
+		return "redirect:/board/list.do";
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import myodan.board.mapper.BoardMapper;
 import myodan.board.service.BoardService;
 import myodan.board.vo.BoardVO;
+import myodan.board.vo.PagingVO;
 
 @Service("boardService")
 public class BoardSeriveImpl implements BoardService {
@@ -33,13 +34,23 @@ public class BoardSeriveImpl implements BoardService {
 	}
 
 	@Override
-	public BoardVO selectBoard(BoardVO boardVO) {
-		return boardDAO.selectBoard(boardVO);
+	public BoardVO selectBoard(int id) {
+		return boardDAO.selectBoard(id);
 	}
 
 	@Override
 	public List<BoardVO> selectBoardList() {
 		return boardDAO.selectBoardList();
+	}
+
+	@Override
+	public List<BoardVO> selectBoardListWithPaging(PagingVO pagingVO) {
+		return boardDAO.selectBoardListWithPaging(pagingVO);
+	}
+
+	@Override
+	public int selectBoardTotal() {
+		return boardDAO.selectBoardTotal();
 	}
 
 }

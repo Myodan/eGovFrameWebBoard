@@ -64,7 +64,7 @@
 
 	</delete>
 
-	<select id="selectBoard" parameterType="boardVO" resultMap="board">
+	<select id="selectBoard" parameterType="int" resultMap="board">
 
 		SELECT
 			ID, TITLE, CONTENT, AUTHOR, VIEWS, CREATED_DATE, UPDATED_DATE
@@ -81,6 +81,24 @@
 			ID, TITLE, CONTENT, AUTHOR, VIEWS, CREATED_DATE, UPDATED_DATE
 		FROM
 			BOARD ORDER BY CREATED_DATE DESC, ID DESC LIMIT 10
+
+	</select>
+
+	<select id="selectBoardListWithPaging" parameterType="pagingVO" resultMap="board">
+
+		SELECT
+			ID, TITLE, CONTENT, AUTHOR, VIEWS, CREATED_DATE, UPDATED_DATE
+		FROM
+			BOARD ORDER BY CREATED_DATE DESC, ID DESC LIMIT #{pageSize} OFFSET #{offset}
+
+	</select>
+
+	<select id="selectBoardTotal" resultType="int">
+
+		SELECT
+			COUNT(*)
+		FROM
+			BOARD
 
 	</select>
 
