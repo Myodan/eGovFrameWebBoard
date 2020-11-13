@@ -4,6 +4,7 @@ import java.util.List;
 
 import myodan.board.vo.BoardVO;
 import myodan.board.vo.PagingVO;
+import myodan.board.vo.SearchPagingVO;
 
 public interface BoardService {
 
@@ -11,7 +12,9 @@ public interface BoardService {
 
 	void updateBoard(BoardVO boardVO);
 
-	void deleteBoard(BoardVO boardVO);
+	void updateBoardViews(int id);
+
+	void deleteBoard(int id);
 
 	BoardVO selectBoard(int id);
 
@@ -21,4 +24,9 @@ public interface BoardService {
 
 	int selectBoardTotal();
 
+	List<BoardVO> selectBoardListSearch(String searchOption, String keyword);
+
+	List<BoardVO> selectBoardListSearchWithPaging(SearchPagingVO searchPagingVO);
+
+	int selectBoardListSearchTotal(String searchOption, String keyword);
 }

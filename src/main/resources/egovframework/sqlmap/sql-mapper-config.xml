@@ -9,5 +9,6 @@
 		<typeAlias alias="accountVO" type="myodan.board.vo.AccountVO"/>
 		<typeAlias alias="boardVO" type="myodan.board.vo.BoardVO"/>
 		<typeAlias alias="pagingVO" type="myodan.board.vo.PagingVO"/>
+		<typeAlias alias="searchPagingVO" type="myodan.board.vo.SearchPagingVO"/>
     </typeAliases>
 </configuration>

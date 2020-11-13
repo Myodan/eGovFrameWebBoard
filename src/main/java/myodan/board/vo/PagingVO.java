@@ -1,8 +1,10 @@
 package myodan.board.vo;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class PagingVO {
 
 	int page;

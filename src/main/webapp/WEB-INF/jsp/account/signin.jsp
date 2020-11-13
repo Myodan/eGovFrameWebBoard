@@ -13,13 +13,16 @@
 		<div class="card">
 			<div class="card-body">
 				<h1 class="card-title">로그인</h1>
-				<form id="signin" method="POST">
+				<form id="signin" method="POST" onsubmit="formIntercept(this);">
 					<div class="form-group">
-						<label for="username"><strong>사용자 이름</strong></label> <input name="username" id="username" class="form-control" type="text" placeholder="사용자 이름을 입력해주세요!" required>
+						<label for="username"><strong>사용자 이름</strong></label>
+						<input name="username" id="username" class="form-control" type="text" placeholder="사용자 이름을 입력해주세요!" required>
 					</div>
 					<div class="form-group">
-						<label for="password"><strong>암호</strong></label> <input name="password" id="password" class="form-control" type="password" placeholder="암호를 입력해주세요!" required style="margin-bottom: 5px;">
+						<label for="_password"><strong>암호</strong></label>
+						<input name="_password" id="_password" class="form-control" type="password" placeholder="암호를 입력해주세요!" required style="margin-bottom: 5px;">
 					</div>
+					<input name="password" type="hidden" required>
 					<c:if test="${error ne null}">
 						<div class="alert alert-danger" role="alert">
 							<c:out value="${error}"></c:out>
@@ -30,6 +33,13 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function formIntercept( form ) {
+			form.password.value = SHA256(form._password.value);
+			form._password.value = '';
+			form.submit();
+		}
+	</script>
 	<%@ include file="/WEB-INF/jsp/include/script.jsp"%>
 </body>
 </html>

@@ -8,6 +8,7 @@ import myodan.board.mapper.BoardMapper;
 import myodan.board.service.BoardService;
 import myodan.board.vo.BoardVO;
 import myodan.board.vo.PagingVO;
+import myodan.board.vo.SearchPagingVO;
 
 @Service("boardService")
 public class BoardSeriveImpl implements BoardService {
@@ -29,8 +30,13 @@ public class BoardSeriveImpl implements BoardService {
 	}
 
 	@Override
-	public void deleteBoard(BoardVO boardVO) {
-		boardDAO.deleteBoard(boardVO);
+	public void updateBoardViews(int id) {
+		boardDAO.updateBoardViews(id);
+	}
+
+	@Override
+	public void deleteBoard(int id) {
+		boardDAO.deleteBoard(id);
 	}
 
 	@Override
@@ -51,6 +57,21 @@ public class BoardSeriveImpl implements BoardService {
 	@Override
 	public int selectBoardTotal() {
 		return boardDAO.selectBoardTotal();
+	}
+
+	@Override
+	public List<BoardVO> selectBoardListSearch(String searchOption, String keyword) {
+		return boardDAO.selectBoardListSearch(searchOption, keyword);
+	}
+
+	@Override
+	public int selectBoardListSearchTotal(String searchOption, String keyword) {
+		return boardDAO.selectBoardListSearchTotal(searchOption, keyword);
+	}
+
+	@Override
+	public List<BoardVO> selectBoardListSearchWithPaging(SearchPagingVO searchPagingVO) {
+		return boardDAO.selectBoardListSearchWithPaging(searchPagingVO);
 	}
 
 }
